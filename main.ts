@@ -8,9 +8,7 @@ enum GroveJoystickPins {
     //% block=P2
     P2 = 9,
     //% block=P3
-    P3 = 10,
-    //% block=P10
-    P10 = 17
+    P3 = 10
 }
 
 enum GroveJoystickKey {
@@ -40,8 +38,8 @@ enum GroveJoystickKey {
 /**
  * Functions to operate Grove module.
  */
-//% weight=10 color=#9F79EE icon="\uf108" block="Grove"
-namespace grove {
+//% weight=10 color=#9F79EE icon="\uf108" block="Grove - Thumb JoyStick"
+namespace grovejoystick {
     const joystickEventID = 3101;
     let lastJoystick = GroveJoystickKey.None;
     let joystick: GroveJoystick = undefined;
@@ -74,11 +72,10 @@ namespace grove {
     {
         /**
          * Detect position from Grove - Thumb Joystick
-         * @param xpin
-         * @param ypin
+         * @param xpin Microbit Pin connected to Grove - Thumb Joystick x pin
+         * @param ypin Microbit Pin connected to Grove - Thumb Joystick y pin
          */
-        // BUG
-        //% blockId=grove_joystick_read block="Read key of joystickon at|%xpin|and|%ypin"
+        //% blockId=grove_joystick_read block="%strip|Read key of joystickon at|%xpin|and|%ypin"
         //% advanced=true
         read(xpin: GroveJoystickPins, ypin: GroveJoystickPins): number {
             let xdata = 0, ydata = 0, result = 0;
@@ -88,8 +85,7 @@ namespace grove {
             xdata = pins.analogReadPin(<AnalogPin>x);
             ydata = pins.analogReadPin(<AnalogPin>y);
             if (xdata > 1000) {
-                // result = GroveJoystickKey.Press;
-                result = 9;
+                result = GroveJoystickKey.Press;
             }
             else if (xdata > 600) {
                 if (ydata > 600) result = GroveJoystickKey.UR;

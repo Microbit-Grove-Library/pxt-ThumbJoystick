@@ -1,4 +1,4 @@
-let joystick: grove.GroveJoystick = undefined;
+let joystick: grovejoystick.GroveJoystick = undefined;
 
 basic.forever(() => {
     let key = joystick.read(GroveJoystickPins.P0, GroveJoystickPins.P1);
