@@ -75,8 +75,7 @@ namespace grovejoystick {
          * @param xpin Microbit Pin connected to Grove - Thumb Joystick x pin
          * @param ypin Microbit Pin connected to Grove - Thumb Joystick y pin
          */
-        //% blockId=grove_joystick_read block="%strip|Read key of joystickon at|%xpin|and|%ypin"
-        //% advanced=true
+        //% blockId=grove_joystick_read block="Read key of joystickon at|%xpin|and|%ypin"
         read(xpin: GroveJoystickPins, ypin: GroveJoystickPins): number {
             let xdata = 0, ydata = 0, result = 0;
             let x :number = xpin;
