@@ -42,7 +42,7 @@ enum GroveJoystickKey {
 namespace grovejoystick {
     const joystickEventID = 3101;
     let lastJoystick = GroveJoystickKey.None;
-    let joystick: GroveJoystick = undefined;
+    let joystick = new GroveJoystick();
 
     /**
      * Do something when a key is detected by Grove - Thumb Joystick
