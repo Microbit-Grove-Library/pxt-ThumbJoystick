@@ -52,7 +52,7 @@ namespace grovejoystick {
      * @param handler code to run
      */
     //% blockId=grove_joystick_create_event block="on Key|%key| at x pin|%xpin| and y pin|%ypin|"
-    export function onJoystick(key: GroveJoystickKey, xpin: GroveJoystickPins, ypin: GroveJoystickPins, handler: () => void) {
+    export function onJoystick(key: GroveJoystickKey, xpin: GroveJoystickPins, ypin: GroveJoystickPins, handler: () => void): void {
         control.onEvent(joystickEventID, key, handler);
         control.inBackground(() => {
             while(true) {
