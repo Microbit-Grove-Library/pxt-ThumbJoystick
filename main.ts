@@ -42,32 +42,6 @@ enum GroveJoystickKey {
 namespace grovejoystick {
     const joystickEventID = 3101;
     let lastJoystick = GroveJoystickKey.None;
-    let joystick = new GroveJoystick();
-
-    /**
-     * Do something when a key is detected by Grove - Thumb Joystick
-     * @param key type of joystick to detect
-     * @param xpin
-     * @param ypin
-     * @param handler code to run
-     */
-    //% blockId=grove_joystick_create_event block="on Key|%key| at x pin|%xpin| and y pin|%ypin|"
-    //% parts="grovejoystick"
-    export function onJoystick(key: GroveJoystickKey, xpin: GroveJoystickPins, ypin: GroveJoystickPins, handler: () => void): void {
-        control.onEvent(joystickEventID, key, handler);
-        control.inBackground(() => {
-            while(true) {
-                const key = joystick.read(xpin, ypin);
-                if (key != lastJoystick) {
-                    lastJoystick = key; 
-                    control.raiseEvent(joystickEventID, lastJoystick);
-                }
-                basic.pause(200);
-            }
-        })
-        
-    }
-
 
     export class GroveJoystick
     {
@@ -107,5 +81,31 @@ namespace grovejoystick {
             
             return result;
         }
+    }
+
+    let joystick = new GroveJoystick();
+
+    /**
+     * Do something when a key is detected by Grove - Thumb Joystick
+     * @param key type of joystick to detect
+     * @param xpin
+     * @param ypin
+     * @param handler code to run
+     */
+    //% blockId=grove_joystick_create_event block="on Key|%key| at x pin|%xpin| and y pin|%ypin|"
+    //% parts="grovejoystick"
+    export function onJoystick(key: GroveJoystickKey, xpin: GroveJoystickPins, ypin: GroveJoystickPins, handler: () => void): void {
+        control.onEvent(joystickEventID, key, handler);
+        control.inBackground(() => {
+            while(true) {
+                const key = joystick.read(xpin, ypin);
+                if (key != lastJoystick) {
+                    lastJoystick = key; 
+                    control.raiseEvent(joystickEventID, lastJoystick);
+                }
+                basic.pause(200);
+            }
+        })
+        
     }
 }
