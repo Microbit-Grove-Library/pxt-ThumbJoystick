@@ -52,6 +52,7 @@ namespace grovejoystick {
      * @param handler code to run
      */
     //% blockId=grove_joystick_create_event block="on Key|%key| at x pin|%xpin| and y pin|%ypin|"
+    //% parts="grovejoystick"
     export function onJoystick(key: GroveJoystickKey, xpin: GroveJoystickPins, ypin: GroveJoystickPins, handler: () => void): void {
         control.onEvent(joystickEventID, key, handler);
         control.inBackground(() => {
@@ -76,6 +77,7 @@ namespace grovejoystick {
          * @param ypin Microbit Pin connected to Grove - Thumb Joystick y pin
          */
         //% blockId=grove_joystick_read block="%joystick|Read key of joystickon at|%xpin|and|%ypin"
+        //% parts="grovejoystick"
         //% advanced=true
         read(xpin: GroveJoystickPins, ypin: GroveJoystickPins): number {
             let xdata = 0, ydata = 0, result = 0;
